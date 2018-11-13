@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
         final Button button = findViewById(R.id.button1);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                EditText breeText=findViewById(R.id.breedText);
-                EditText ıdText=findViewById(R.id.idText);
+                EditText breeText=findViewById(R.id.breedField);
+                EditText ıdText=findViewById(R.id.idField);
 
                 cow newCow=new cow (Integer.parseInt(breeText.getText().toString()),Integer.parseInt(ıdText.getText().toString()));
 
