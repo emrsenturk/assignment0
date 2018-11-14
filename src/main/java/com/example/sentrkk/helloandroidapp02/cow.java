@@ -27,7 +27,7 @@ public class cow implements Parcelable {
 
     public String toString(){
 
-        return  this._breed+"                                        "+this._ıd;
+        return  this._breed+"                                         "+this._ıd;
     }
     public cow(Parcel in){
         this._breed=in.readInt();

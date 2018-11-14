@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.ListView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +54,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 EditText breeText=findViewById(R.id.breedField);
                 EditText ıdText=findViewById(R.id.idField);
+
+                if (breeText.getText().toString().equals("") && !ıdText.getText().toString().equals("") ||
+                        !breeText.getText().toString().equals("") && ıdText.getText().toString().equals("")  ){
+
+                    Toast.makeText(getApplicationContext(),"Provide both inputs ",Toast.LENGTH_SHORT).show();
+
+
+                }
+
                 if(!breeText.getText().toString().equals("") && !ıdText.getText().toString().equals("")) {
                     cow newCow = new cow(Integer.parseInt(breeText.getText().toString()), Integer.parseInt(ıdText.getText().toString()));
 
@@ -60,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
                     adapter.notifyDataSetChanged();
                     refreshCounter();
                 }
+
+
             }
         });
 
