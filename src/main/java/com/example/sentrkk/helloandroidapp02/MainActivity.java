@@ -52,24 +52,23 @@ public class MainActivity extends AppCompatActivity {
         final Button button = findViewById(R.id.button1);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                EditText breeText=findViewById(R.id.breedField);
-                EditText ıdText=findViewById(R.id.idField);
+                EditText breeText = findViewById(R.id.breedField);
+                EditText ıdText = findViewById(R.id.idField);
 
+                //toast message for uygun olmayan input
                 if (breeText.getText().toString().equals("") && !ıdText.getText().toString().equals("") ||
-                        !breeText.getText().toString().equals("") && ıdText.getText().toString().equals("")  ){
+                        !breeText.getText().toString().equals("") && ıdText.getText().toString().equals("") ||
+                         breeText.getText().toString().equals("") && ıdText.getText().toString().equals("")){
 
-                    Toast.makeText(getApplicationContext(),"Provide both inputs ",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Provide both inputs ", Toast.LENGTH_SHORT).show();
 
-
-                }
-
-                if(!breeText.getText().toString().equals("") && !ıdText.getText().toString().equals("")) {
-                    cow newCow = new cow(Integer.parseInt(breeText.getText().toString()), Integer.parseInt(ıdText.getText().toString()));
-
-                    lıstOfCows.add(newCow);
-                    adapter.notifyDataSetChanged();
-                    refreshCounter();
-                }
+                } else
+                     {
+                cow newCow = new cow(Integer.parseInt(breeText.getText().toString()), Integer.parseInt(ıdText.getText().toString()));
+                lıstOfCows.add(newCow);
+                adapter.notifyDataSetChanged();
+                refreshCounter();
+            }
 
 
             }
