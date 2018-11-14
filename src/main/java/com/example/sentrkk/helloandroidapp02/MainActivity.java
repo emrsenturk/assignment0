@@ -17,12 +17,22 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        adapter.notifyDataSetChanged();
+        refreshCounter();
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
     private ArrayAdapter<cow> adapter;
     private ArrayList<cow> lıstOfCows=new ArrayList<cow>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         adapter=new ArrayAdapter<cow>(this,android.R.layout.simple_expandable_list_item_1,lıstOfCows);
         ListView lv=findViewById(R.id.listView);
         lv.setAdapter(adapter);
@@ -32,9 +42,10 @@ public class MainActivity extends AppCompatActivity {
         buttonclear.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 lıstOfCows.clear();
+                refreshCounter();
+                adapter.notifyDataSetChanged();
             }
         });
-
 
         //add button
         final Button button = findViewById(R.id.button1);
@@ -42,22 +53,33 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 EditText breeText=findViewById(R.id.breedField);
                 EditText ıdText=findViewById(R.id.idField);
+                if(!breeText.getText().toString().equals("") && !ıdText.getText().toString().equals("")) {
+                    cow newCow = new cow(Integer.parseInt(breeText.getText().toString()), Integer.parseInt(ıdText.getText().toString()));
 
-                cow newCow=new cow (Integer.parseInt(breeText.getText().toString()),Integer.parseInt(ıdText.getText().toString()));
+                    lıstOfCows.add(newCow);
+                    adapter.notifyDataSetChanged();
+                    refreshCounter();
+                }
+            }
+        });
 
-               lıstOfCows.add(newCow);
-
+        //reject button
+        final Button buttonrej = findViewById(R.id.button2);
+        buttonrej.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                EditText breeText = findViewById(R.id.breedField);
+                EditText ıdText = findViewById(R.id.idField);
+                breeText.setText("");
+                ıdText.setText("");
 
             }
         });
 
-
     }
 
-    public void deleteCow (){
-
-
-
+    public void refreshCounter (){
+        TextView tw=findViewById(R.id.cowsCounter);
+        tw.setText(Integer.toString(lıstOfCows.size()));
 
     }
 

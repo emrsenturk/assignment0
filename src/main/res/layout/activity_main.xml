@@ -4,6 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbarAlwaysDrawHorizontalTrack="false"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+
+    android:label="@string/app_name"
+    android:screenOrientation="portrait"
     tools:context=".MainActivity">
 
     <EditText
@@ -15,17 +20,18 @@
         android:ems="10"
         android:hint="Breed"
         android:inputType="number"
+        android:maxLength="3"
         android:textAlignment="center"
         app:layout_constraintBaseline_toBaselineOf="@+id/idField"
         app:layout_constraintEnd_toStartOf="@+id/idField"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+       />
 
     <EditText
         android:id="@+id/idField"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:ems="10"
         android:hint="ID"
@@ -33,7 +39,8 @@
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/breedField"
-        app:layout_constraintTop_toBottomOf="@+id/headerView" />
+        app:layout_constraintTop_toBottomOf="@+id/headerView"
+        android:maxLength="3"/>
 
     <TextView
         android:id="@+id/headerView"
@@ -83,10 +90,10 @@
 
     <ListView
         android:id="@+id/listView"
-        android:layout_width="320dp"
-        android:layout_height="210dp"
+        android:layout_width="310dp"
+        android:layout_height="220dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="62dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="12dp"
         android:headerDividersEnabled="false"
@@ -94,6 +101,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button1">
+
 
     </ListView>
 
@@ -115,21 +123,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="CLEAR"
         android:background="@color/colorAccent"
+        android:text="CLEAR"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cowsCounter" />
 
-    <EditText
+    <TextView
         android:id="@+id/editText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:background="#e6e6e6"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="none"
         android:text="Breed"
         android:textAlignment="center"
         app:layout_constraintBaseline_toBaselineOf="@+id/editText2"
@@ -137,7 +145,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
+    <TextView
         android:id="@+id/editText2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -145,11 +153,12 @@
         android:layout_marginEnd="32dp"
         android:background="#e6e6e6"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="none"
         android:text="ID"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/editText"
         app:layout_constraintTop_toBottomOf="@+id/button2" />
+
 </android.support.constraint.ConstraintLayout>
